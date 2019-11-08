@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125b9f6e6906d6e4897a443b3c12729c, type: 3}
+  m_Name: UIAtlas
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 45ee2ff5636521e46a023c64c02ea70f, type: 2}
+  mSprites:
+  - name: "\uCE90\uB9AD\uD130\uC815\uBCF4\uCC3D-Attack&skill"
+    x: 1341
+    y: 1222
+    width: 450
+    height: 95
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uCE90\uB9AD\uD130\uC815\uBCF4\uCC3D-status"
+    x: 371
+    y: 686
+    width: 250
+    height: 85
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uCE90\uB9AD\uD130\uC815\uBCF4\uCC3D-\uACF5\uACA9\uC2A4\uD0AC\uC124\uBA85\uCC3D"
+    x: 0
+    y: 651
+    width: 370
+    height: 120
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uCE90\uB9AD\uD130\uC815\uBCF4\uCC3D-\uACF5\uACA9\uC2A4\uD0AC\uCC3D"
+    x: 1872
+    y: 1928
+    width: 120
+    height: 120
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uCE90\uB9AD\uD130\uC815\uBCF4\uCC3D-\uAE30\uBCF8\uC2A4\uD0EF\uCC3D"
+    x: 0
+    y: 967
+    width: 635
+    height: 250
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uCE90\uB9AD\uD130\uC815\uBCF4\uCC3D-\uBC30\uACBD"
+    x: 0
+    y: 1218
+    width: 1340
+    height: 830
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uCE90\uB9AD\uD130\uC815\uBCF4\uCC3D-\uC2A4\uD0AC\uC124\uBA85\uCC3D"
+    x: 0
+    y: 772
+    width: 635
+    height: 194
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uCE90\uB9AD\uD130\uC815\uBCF4\uCC3D-\uCE90\uB9AD\uD130\uBD80\uBD84"
+    x: 1341
+    y: 1318
+    width: 530
+    height: 730
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  mPixelSize: 1
+  mReplacement: {fileID: 0}

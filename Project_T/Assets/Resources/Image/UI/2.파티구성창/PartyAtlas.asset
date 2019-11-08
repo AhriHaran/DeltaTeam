@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125b9f6e6906d6e4897a443b3c12729c, type: 3}
+  m_Name: PartyAtlas
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 75dd1ec10cde8de43a1b8037b3f20e63, type: 2}
+  mSprites:
+  - name: "\uB8E8\uCE74\uC2A4"
+    x: 301
+    y: 508
+    width: 294
+    height: 354
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uC288\uB098\uC774\uB354"
+    x: 0
+    y: 162
+    width: 296
+    height: 354
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uC720\uC774"
+    x: 301
+    y: 863
+    width: 296
+    height: 354
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uD30C\uD2F0\uAD6C\uC131\uCC3D"
+    x: 0
+    y: 1218
+    width: 1340
+    height: 830
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uD30C\uD2F0\uAD6C\uC131\uCC3D-\uCE90\uB9AD\uD130 \uBAA9\uB85D\uCC3D"
+    x: 598
+    y: 1037
+    width: 500
+    height: 180
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uD30C\uD2F0\uAD6C\uC131\uCC3D-\uCE90\uB9AD\uD130 \uBAA9\uB85D\uCC3D(\uC218\uC815)"
+    x: 1099
+    y: 1037
+    width: 500
+    height: 180
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uD30C\uD2F0\uAD6C\uC131\uCC3D-\uCE90\uB9AD\uD130\uCC3D"
+    x: 1341
+    y: 1348
+    width: 300
+    height: 700
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uD30C\uD2F0\uAD6C\uC131\uCC3D-\uD654\uC0B4\uD45C"
+    x: 1341
+    y: 1257
+    width: 300
+    height: 90
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 10
+    paddingBottom: 0
+  - name: "\uD30C\uD2F0\uAD6C\uC131\uCE90\uB9AD\uD130"
+    x: 1642
+    y: 1348
+    width: 300
+    height: 700
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: "\uD30C\uD2F0\uAD6C\uC131\uCE90\uB9AD\uD130(\uC218\uC815)"
+    x: 0
+    y: 517
+    width: 300
+    height: 700
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  mPixelSize: 1
+  mReplacement: {fileID: 0}
