@@ -36,6 +36,7 @@ public class BlockInput : MonoBehaviour
         if(m_bClickOK)
         {
             m_CallBacK?.Invoke(m_iIndex);
+            m_bClickOK = false;
             Debug.Log(m_iIndex);
         }
     }

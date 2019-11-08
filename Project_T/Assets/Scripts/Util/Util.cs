@@ -116,4 +116,19 @@ public partial class Util
         fValue = fCur / fMax;
         return fValue;
     }
+
+    public static string TimeCheck(float fTime)
+    {
+        int iMin = (int)(fTime / 60.0f);   //분
+        float fSec = fTime % 60.0f;
+
+        string strTime = string.Empty;
+        if (fSec == 0.0f)
+            strTime = iMin + ":" + fSec + "0";
+        else if (fSec <= 9.0f)
+            strTime = iMin + ":" + "0" + fSec;
+        else
+            strTime = iMin + ":" + fSec;
+        return strTime;
+    }
 }

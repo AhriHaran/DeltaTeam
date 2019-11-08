@@ -70,6 +70,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -136,8 +137,8 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   translator:
     autoReset: 1
-    layerMixModes: 0100000001000000
-    layerBlendModes: 0100000002000000
+    layerMixModes: 01000000
+    layerBlendModes: 01000000
 --- !u!114 &6807014314810953197
 MonoBehaviour:
   m_ObjectHideFlags: 0

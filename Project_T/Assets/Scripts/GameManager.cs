@@ -211,6 +211,12 @@ public class GameManager : MonoSingleton<GameManager>
         get { return m_eRescueClass; }
         set { m_eRescueClass = value; }
     }
+    private string m_strRescueName;
+    public string WhoRescueName
+    {
+        get { return m_strRescueName; }
+        set { m_strRescueName = value; }
+    }
 
     /// <summary>
     /// 경험치

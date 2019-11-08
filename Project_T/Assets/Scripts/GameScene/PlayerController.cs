@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Move")]
     public float m_MoveSpeed = 3.0f;
-    public float m_Move = 0.1f;
     Vector3 m_Input = Vector3.zero;
     private bool m_bLeft = false;
     private bool m_bRight = false;

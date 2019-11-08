@@ -65,7 +65,7 @@ public class GameScene : MonoBehaviour
                         UpTime = m_StageData.StageNormalTimeUP;
                     else if(GameManager.instance.WhoBattleType == CHARACTER_TYPE.CHAR_DANGEROUS)
                         UpTime = m_StageData.StageDangerTimeUP;
-                    GameManager.instance.MaxTime += UpTime;
+                    GameManager.instance.CurTime += UpTime;
                     //업타임
                     break;
                 case MISSION_STATUS.MISSION_BATTLE_LOSE:
@@ -74,22 +74,25 @@ public class GameScene : MonoBehaviour
                         DownTime = m_StageData.StageNormalTimeDown;
                     else if (GameManager.instance.WhoBattleType == CHARACTER_TYPE.CHAR_DANGEROUS)
                         DownTime = m_StageData.StageDangerTimeDown;
-                    GameManager.instance.MaxTime -= DownTime;
-                    //업타임
+                    GameManager.instance.CurTime -= DownTime;
+                    //다운 타임
                     break;
                 case MISSION_STATUS.MISSION_COMPLETE:
                     //미션 성공(패널 띄워줌)
                     m_Result.gameObject.SetActive(true);
                     m_Result.GetComponent<MissionResult>().Mission(MISSION_STATUS.MISSION_COMPLETE, m_StageData.StageMission);
+                    StartCoroutine("TimeCheck");
                     break;
                 case MISSION_STATUS.MISSION_FAILED:
                     m_Result.gameObject.SetActive(true);
                     m_Result.GetComponent<MissionResult>().Mission(MISSION_STATUS.MISSION_FAILED, m_StageData.StageMission);
+                    StartCoroutine("TimeCheck");
                     //미션 실패
                     break;
                 case MISSION_STATUS.MISSION_TIME_OUT:
                     m_Result.gameObject.SetActive(true);
                     m_Result.GetComponent<MissionResult>().Mission(MISSION_STATUS.MISSION_TIME_OUT, m_StageData.StageMission);
+                    StartCoroutine("TimeCheck");
                     break;
                 case MISSION_STATUS.MISSION_BOSS_WIN:
                     //보스 킬
@@ -103,6 +106,7 @@ public class GameScene : MonoBehaviour
                             GameManager.instance.MissionStatus = MISSION_STATUS.MISSION_FAILED;
                     }
                     //보스 킬을 하면 우선 결과가 뜬다.
+                    StartCoroutine("TimeCheck");
                     break;
             }
             yield return new WaitForSeconds(0.8f);
@@ -115,19 +119,13 @@ public class GameScene : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(1.0f);
-
-            float fTime = GameManager.instance.MaxTime;
+            
+            float fTime = GameManager.instance.CurTime;
             fTime -= 1.0f;
 
-            int iMin = (int)(fTime / 60.0f);   //분
-            float fSec = fTime % 60.0f;
-
-            if (fSec == 0.0f)
-                m_TimeLabel.text = iMin + ":" + fSec + "0";
-            else if(fSec <= 9.0f)
-                m_TimeLabel.text = iMin + ":" + "0"+ fSec;
-            else
-                m_TimeLabel.text = iMin + ":" + fSec;
+            if (fTime <= 0.0f)
+                fTime = 0.0f;
+            m_TimeLabel.text = Util.TimeCheck(fTime);
 
             if (fTime <= 0.0f)
             {
@@ -137,8 +135,7 @@ public class GameScene : MonoBehaviour
                 //게임 리셋?
                 StopCoroutine("TimeCheck");
             }
-
-            GameManager.instance.MaxTime = fTime;
+            GameManager.instance.CurTime = fTime;
         }
     }
 }

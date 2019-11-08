@@ -34,6 +34,7 @@ public class MapManager : MonoBehaviour
     public GameObject m_ResqueObject;   //레스큐
 
     private List<BlockData> m_BlockList = new List<BlockData>();
+    private List<BlockInput> m_BlockInputList = new List<BlockInput>();
     private GameObject m_BlockNode;
     private GameObject m_PlayerObject;
 
@@ -51,7 +52,7 @@ public class MapManager : MonoBehaviour
         //유저 맵 데이터 기반으로 맵 불러오기
         m_BlockNode = ResourceLoader.CreatePrefab("Prefabs/Map/Block");
         m_BlockNode.transform.SetParent(transform, false);
-        m_PlayerObject = GameObject.Find("GameObject").transform.GetChild(1).transform.Find("Player").gameObject;
+        m_PlayerObject = GameObject.Find("GameObject").transform.GetChild(1).transform.GetChild(0).gameObject;
         //유저가 현재 선택한 맵 데이터 기반
 
         int iStageIndex = GameManager.instance.StageIndex;
@@ -66,7 +67,6 @@ public class MapManager : MonoBehaviour
         MapClassSetting(GameManager.instance.BlockIndex);   //각각의 맵의 블럭 클래스를 각각 설정
 
         EndPoint(false);
-        GameManager.instance.MissionStatus = MISSION_STATUS.MISSION_CONTINUE;
     }
 
     public void MapSetting(int iMapIndex)//현재 맵 셋팅
@@ -90,7 +90,9 @@ public class MapManager : MonoBehaviour
         int iMax = m_BlockList.Count;
         for (int i = 0; i < iMax; i++)
         {
-            m_MiniMap.transform.GetChild(i).GetComponent<BlockInput>().CallBackSetting(MapClassSetting);
+            BlockInput Node = m_MiniMap.transform.GetChild(i).GetComponent<BlockInput>();
+            Node.CallBackSetting(MapClassSetting);
+            m_BlockInputList.Add(Node);
         }//미니맵 콜백
         //미니맵 콜백
     }
@@ -224,9 +226,11 @@ public class MapManager : MonoBehaviour
         for (int i =0; i < m_BlockList.Count; i++)
         {
             if(i == iCurBlock)
-                m_MiniMap.transform.GetChild(i).GetComponent<BlockInput>().CurPlayer(true);
+                m_BlockInputList[i].CurPlayer(true);
             else
-                m_MiniMap.transform.GetChild(i).GetComponent<BlockInput>().CurPlayer(false);
+                m_BlockInputList[i].CurPlayer(false);
+
+            m_BlockInputList[i].SelectOK(false);
         }
         //그리고 미니맵에 현재 위치 표시
     }
@@ -293,10 +297,10 @@ public class MapManager : MonoBehaviour
                 
                 int[] iarr = m_BlockList[iBlockIndex].BlockLinkedList;
                 for (int i = 0; i < iMax; i++)
-                    m_MiniMap.transform.GetChild(i).GetComponent<BlockInput>().SelectOK(false);
+                    m_BlockInputList[i].SelectOK(false);
 
                 for (int i = 0; i < iarr.Length; i++)
-                    m_MiniMap.transform.GetChild(iarr[i]).GetComponent<BlockInput>().SelectOK(true);
+                    m_BlockInputList[iarr[i]].SelectOK(true);
 
                 Debug.Log("EndPoint");
                 m_bEnd = false;
@@ -309,7 +313,7 @@ public class MapManager : MonoBehaviour
             m_bEnd = true;
             int iMax = m_BlockList.Count;
             for (int i = 0; i < iMax; i++)
-                m_MiniMap.transform.GetChild(i).GetComponent<BlockInput>().SelectOK(false);
+                m_BlockInputList[i].SelectOK(false);
         }
     }
 

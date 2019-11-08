@@ -124,9 +124,9 @@ public class LobbyScene : MonoBehaviour
 
             var StageTabel = EXCEL.ExcelLoad.Read("Excel/Map_Table");
             GameManager.instance.MaxTime = float.Parse(Util.ConvertToString(StageTabel[iStage][MAP_TABLE_DATA.MAP_CLEAR_TIME.ToString()]));
+            GameManager.instance.CurTime = GameManager.instance.MaxTime;
             //시간 셋팅
-
-
+            
             string Route = "Excel/MapData/" + Util.ConvertToInt(iStage) + "/MapTable";
             //맵 테이블
             var MapTable = EXCEL.ExcelLoad.Read(Route);

@@ -258,6 +258,7 @@ public class BattleScene : MonoBehaviour
                 UserInfo.instance.UserPartyCopy();  //유저파티 카피
                 m_ResultPanel.SetActive(true);
                 StopCoroutine("PhaseAction");
+                break;
             }
             else if(iEnemyMax <= 0)
             {
@@ -282,6 +283,7 @@ public class BattleScene : MonoBehaviour
                 GameManager.instance.WhatPhase = GAME_PHASE.PHASE_RESULT_WIN;
                 m_ResultPanel.SetActive(true);
                 StopCoroutine("PhaseAction");
+                break;
             }
             yield return new WaitForSeconds(1.0f);
         }
