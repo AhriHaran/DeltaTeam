@@ -110,26 +110,43 @@ public class MissionResult : MonoBehaviour
                         m_Grid.transform.DetachChildren();
                     }
 
-                    int iIndex = GameManager.instance.WhoRescueIndex;
-                    CLASS eClass = GameManager.instance.WhoRescueClass;
-                    string strName = GameManager.instance.WhoRescueName;
+                    GameObject Resque = ResourceLoader.CreatePrefab("ResquePlayerCard");
+                    Resque.transform.SetParent(m_Grid.transform, false);
+                    Resque.GetComponent<PlayerResqueCard>().Setting(GameManager.instance.WhoRescueName, GameManager.instance.WhoRescueClass);
 
+                    //컴패니언 정보 세이브
 
+                    CharData Node = new CharData();
+                    Node.m_CurEXP = 0;
+                    Node.m_eClass = GameManager.instance.WhoRescueClass;
+                    Node.m_iIndex = GameManager.instance.WhoRescueIndex;
+                    Node.m_Level = 1;
+                    UserInfo.instance.CompanionSetting(Node);
+                    //동료 셋팅
 
                     m_bCompanion = true;
                 }
                 else
                 {
-
+                    //동료 패널 나오고 제 클릭시
+                    //로비신으로\
+                    UserInfo.instance.UserCompanionSave();
+                    UserInfo.instance.UserPartySave();
+                    //세이브 후 로비신으로
+                    Time.timeScale = 1.0f;
+                    LoadScene.SceneLoad("LobbyScene");
                 }
-
             }
-            //로비신으로\
-            UserInfo.instance.UserCompanionSave();
-            UserInfo.instance.UserPartySave();
-            //세이브 후 로비신으로
-            Time.timeScale = 1.0f;
-            LoadScene.SceneLoad("LobbyScene");
+            else
+            {   
+                //로비신으로\
+                UserInfo.instance.UserCompanionSave();
+                UserInfo.instance.UserPartySave();
+                //세이브 후 로비신으로
+                Time.timeScale = 1.0f;
+                LoadScene.SceneLoad("LobbyScene");
+            }
+
         }
         else
         {
