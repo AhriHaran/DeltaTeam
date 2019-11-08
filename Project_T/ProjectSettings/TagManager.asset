@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Drag and Drop Root
+  - Party
   layers:
   - Default
   - TransparentFX

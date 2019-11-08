@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PartyPanel : MonoBehaviour
 {
-    private int m_iIndex = -1;
+    public int m_iPartyPanelIndex;
+    private int m_iIndex = -1;  //플레이어 인덱스
     public UISprite m_CharSprite;
     public GameObject m_HPSlider;  //캐릭터 HP 슬라이더
     public GameObject m_Status;
@@ -23,11 +24,17 @@ public class PartyPanel : MonoBehaviour
     {
         if(m_iIndex != iIndex)
         {
-            //m_CharSprite
             CharPartyData Party = UserInfo.instance.PartyList[iIndex];
             m_HPSlider.GetComponent<HPSlider>().ShowHP(Party.MaxHP, Party.CurHP);
             m_Status.GetComponent<ShowStatus>().ShowPartyStatus(iIndex, CHARACTER_TYPE.CHAR_PLAYER, false);
+            m_CharSprite.spriteName = Util.ConvertToString(Party.CharData.ReturnData(CHARACTER_DATA.CHAR_NAME));
             m_iIndex = iIndex;
         }
+    }
+
+    public void DragEnd()
+    {
+        Debug.Log(m_iPartyPanelIndex);
+
     }
 }

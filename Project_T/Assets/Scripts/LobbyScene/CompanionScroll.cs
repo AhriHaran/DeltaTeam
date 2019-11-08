@@ -35,7 +35,7 @@ public class CompanionScroll : MonoBehaviour
         {
             GameObject CharInfo = ResourceLoader.CreatePrefab("Prefabs/UI/CharInfomation");
             CharInfo.transform.SetParent(m_Grid.transform, false);
-            CharInfo.GetComponent<CharInfomation>().Setting(i);
+            CharInfo.GetComponent<CharInfomation>().Setting(i); //컴패니언 리스트 기준의 인덱스
         }
 
         m_Grid.GetComponent<UIGrid>().Reposition(); //리 포지셔닝으로 그리드 재정렬
@@ -50,6 +50,16 @@ public class CompanionScroll : MonoBehaviour
         for (int i = 0; i < iMax; i++)
         {
             m_Grid.transform.GetChild(i).GetComponent<CharInfomation>().OnClickSetting(call);
+        }
+    }
+
+    public void OnDragSetting(CallBackInt call)
+    {
+        //캐릭터 정보창에서 클릭 셋팅
+        int iMax = UserInfo.instance.CompanionList.Count;
+        for (int i = 0; i < iMax; i++)
+        {
+            m_Grid.transform.GetChild(i).GetComponent<CharInfomation>().OnDragSetting(call);
         }
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7566098144984865542}
   - component: {fileID: 7566098144984865541}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: LevelLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7566098145090783112}
   - component: {fileID: 7566098145090783119}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7566098145188927674}
   - component: {fileID: 7566098145188927673}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: HPBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7566098145504818302}
   - component: {fileID: 2168218471964390624}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: PlayerCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7566098145882409252}
   - component: {fileID: 7566098145882409243}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: EXP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7566098145945052399}
   - component: {fileID: 7566098145945052398}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CharSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7566098146250754215}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: ETC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7566098146340915019}
   - component: {fileID: 7566098146340915018}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: EXPBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
