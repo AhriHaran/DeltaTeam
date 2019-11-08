@@ -66,30 +66,46 @@ public class UserInfo : GSingleton<UserInfo>
                 {
                     int iCount = JsonData.m_PartyListIndex[i];
                     //플레이어 파티 셋팅
-                    CharPartyData Node = new CharPartyData();
-                    Node.PartyIndex = iCount;
-                    Node.CharType = CHARACTER_TYPE.CHAR_PLAYER;
-                    Node.CharData = CompanionList[iCount];
-
-                    Node.MaxHP = float.Parse(Util.ConvertToString(CompanionList[iCount].ReturnData(CHARACTER_DATA.CHAR_MAX_HP)));
-                    Node.CurHP = float.Parse(Util.ConvertToString(CompanionList[iCount].ReturnData(CHARACTER_DATA.CHAR_MAX_HP)));
-
-                    Node.MaxStemina = 3;  //3칸으로 설정
-
-                    string[] arr = Util.ConvertToString(CompanionList[iCount].ReturnData(CHARACTER_DATA.CHAR_SPEED)).Split(';');
-                    Node.FillStemina = Util.ConvertToInt(arr[0]);   //턴당
-                    Node.CurFillStemina = 1;    //캐릭터 현재턴
-                    Node.SteminaCurFill = Util.ConvertToInt(arr[1]);  //이러한 게이지가 찬다.
-                    Node.CurStemina = Node.SteminaCurFill;
-                    Node.Stay = false;
-
-                    PartyList.Add(Node);
-                    //유저 현재 파티 구성
+                    PartySetting(iCount);
                 }
             }
             //파티 데이터 셋팅(유저의 인덱스 순서)
         }
     }
+
+    public void PartySetting(int iIndex)
+    {
+        if(iIndex < m_CompanionList.Count)
+        {
+            CharPartyData Node = new CharPartyData();
+            PartySetting(Node, iIndex);
+            PartyList.Add(Node);
+        }
+    }
+
+    public void PartySetting(CharPartyData Node, int iIndex)
+    {
+        if (iIndex < m_CompanionList.Count)
+        {
+            Node.PartyIndex = iIndex;
+            Node.CharType = CHARACTER_TYPE.CHAR_PLAYER;
+            Node.CharData = CompanionList[iIndex];
+
+            Node.MaxHP = float.Parse(Util.ConvertToString(CompanionList[iIndex].ReturnData(CHARACTER_DATA.CHAR_MAX_HP)));
+            Node.CurHP = float.Parse(Util.ConvertToString(CompanionList[iIndex].ReturnData(CHARACTER_DATA.CHAR_MAX_HP)));
+
+            Node.MaxStemina = 3;  //3칸으로 설정
+
+            string[] arr = Util.ConvertToString(CompanionList[iIndex].ReturnData(CHARACTER_DATA.CHAR_SPEED)).Split(';');
+            Node.FillStemina = Util.ConvertToInt(arr[0]);   //턴당
+            Node.CurFillStemina = 1;    //캐릭터 현재턴
+            Node.SteminaCurFill = Util.ConvertToInt(arr[1]);  //이러한 게이지가 찬다.
+            Node.CurStemina = Node.SteminaCurFill;
+            Node.Stay = false;
+        }
+    }
+
+
 
     public void UserPartySave()
     {
@@ -109,6 +125,21 @@ public class UserInfo : GSingleton<UserInfo>
         Debug.Log(jsonData);
         JSON.JsonUtil.CreateJson("UserPartyData", jsonData);
         //플레이어 파티 리스트
+    }
+
+    public void PartySwapToCompanion(int iPartyIndex, int iCompanionIndex)
+    {
+        //1번 인수의 파티 캐릭터를 2번 인수의 컴패니언 리스트로 교체
+        PartySetting(PartyList[iPartyIndex], iCompanionIndex);
+    }
+
+    public void PartySwapToParty(int iPartyIndex0, int iPartyIndex1)
+    {
+        //0번과 1번을 교환
+        CharPartyData SwapTmp = new CharPartyData(PartyList[iPartyIndex0]);
+        PartyList[iPartyIndex0] = PartyList[iPartyIndex1];
+        PartyList[iPartyIndex1] = SwapTmp;
+        //스왑
     }
 
     public void UserCompanionSave()

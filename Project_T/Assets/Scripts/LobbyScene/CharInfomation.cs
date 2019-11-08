@@ -81,7 +81,7 @@ public class CharInfomation : MonoBehaviour
         m_PartySprite.SetActive(false);//스프라이트를 꺼주고
         m_bDrag = false;
 
-        m_OnClick?.Invoke(m_iIndex);    //해당 인덱스를 드래그 아웃
+        m_OnClick?.Invoke(m_iIndex);    //해당 인덱스를 드래그 아웃    //컴패니언 리스트의 순서를 반환한다.
     }
 
 

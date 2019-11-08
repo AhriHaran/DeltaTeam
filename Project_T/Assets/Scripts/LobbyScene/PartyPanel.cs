@@ -22,14 +22,11 @@ public class PartyPanel : MonoBehaviour
 
     public void ShowPartyInfo(int iIndex)
     {
-        if(m_iIndex != iIndex)
-        {
-            CharPartyData Party = UserInfo.instance.PartyList[iIndex];
-            m_HPSlider.GetComponent<HPSlider>().ShowHP(Party.MaxHP, Party.CurHP);
-            m_Status.GetComponent<ShowStatus>().ShowPartyStatus(iIndex, CHARACTER_TYPE.CHAR_PLAYER, false);
-            m_CharSprite.spriteName = Util.ConvertToString(Party.CharData.ReturnData(CHARACTER_DATA.CHAR_NAME));
-            m_iIndex = iIndex;
-        }
+        CharPartyData Party = UserInfo.instance.PartyList[iIndex];
+        m_HPSlider.GetComponent<HPSlider>().ShowHP(Party.MaxHP, Party.CurHP);
+        m_Status.GetComponent<ShowStatus>().ShowPartyStatus(iIndex, CHARACTER_TYPE.CHAR_PLAYER, false);
+        m_CharSprite.spriteName = Util.ConvertToString(Party.CharData.ReturnData(CHARACTER_DATA.CHAR_NAME));
+        m_iIndex = iIndex;
     }
 
     public void DragEnd()
