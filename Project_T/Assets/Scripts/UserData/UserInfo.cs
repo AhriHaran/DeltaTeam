@@ -17,6 +17,12 @@ public class UserInfo : GSingleton<UserInfo>
         set { m_PartyList = value; }
     }//내부 데이터가 안변하는 리스트랑 게임 파티용 리스트 둘다 필요
 
+    private string m_UserName;
+    public string UserName
+    {
+        get { return m_UserName; }
+        set { m_UserName = value; }
+    }
     public void Init()
     {
         if (JSON.JsonUtil.FileCheck("UserData")) //유저 메인 캐릭터 JSON
@@ -28,6 +34,13 @@ public class UserInfo : GSingleton<UserInfo>
             }
         }
         //유저 동료 셋팅
+
+        if (JSON.JsonUtil.FileCheck("UserNameData"))
+        {
+            UserNameData JsonData = JSON.JsonUtil.LoadJson<UserNameData>("UserNameData");
+            UserName = JsonData.m_strUserName;
+        }
+        //유저 이름 셋팅
     }
 
     public void CompanionSetting(CharData Data)

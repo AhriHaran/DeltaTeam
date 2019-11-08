@@ -259,6 +259,7 @@
     <Compile Include="Assets\Scripts\LobbyScene\QuitUI.cs" />
     <Compile Include="Assets\Scripts\LobbyScene\ShowStatus.cs" />
     <Compile Include="Assets\Scripts\LobbyScene\SteminaSlider.cs" />
+    <Compile Include="Assets\Scripts\PrologueScene\PrologueScene.cs" />
     <Compile Include="Assets\Scripts\TitleScene\AlwaysFirst.cs" />
     <Compile Include="Assets\Scripts\TitleScene\TitleScene.cs" />
     <Compile Include="Assets\Scripts\UserData\CharacterData.cs" />

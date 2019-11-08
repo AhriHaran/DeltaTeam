@@ -39,61 +39,21 @@ public class TitleScene : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            if (!JSON.JsonUtil.FileCheck("UserData")) //현재 파일이 있는가?
+            if(!JSON.JsonUtil.FileCheck("UserNameData"))
             {
-                //없으면 데이터 생성
-                //메인 캐릭터 라벨
-                CharData [] Node = new CharData[1];
-                Node[0] = new CharData();
-                Node[0].m_Level = 1;
-                Node[0].m_iIndex = 0;
-                Node[0].m_CurEXP = 0;
-                Node[0].m_eClass = CLASS.CLASS_THIEF;
-
-                string jsonData = JSON.JsonUtil.ToJson<CharData>(Node);
-                Debug.Log(jsonData);
-                JSON.JsonUtil.CreateJson("UserData", jsonData);
-                //플레이어 캐릭터 JSON
+                LoadScene.SceneLoad("PrologueScene");   //프롤로그 씬으로 로딩
             }
-
-            if(!JSON.JsonUtil.FileCheck("UserPartyData"))
+            else
             {
-                CharPartyList Node = new CharPartyList();
-                Node.m_PartyListIndex = new int[4];
-                Node.m_PartyListIndex[0] = 0;
-                Node.m_PartyListIndex[1] = -1;
-                Node.m_PartyListIndex[2] = -1;
-                Node.m_PartyListIndex[3] = -1;
+                //모든 데이터가 존재한다.
+                UserInfo.instance.Init();
+                UserInfo.instance.PartySetting();
+                GameManager.instance.Init();
 
-                string jsonData = JSON.JsonUtil.ToJson(Node);
-                Debug.Log(jsonData);
-                JSON.JsonUtil.CreateJson("UserPartyData", jsonData);
-                //플레이어 캐릭터 JSON
+                //플레이어 캐릭터 정보가 존재한다면 로딩
+                LoadScene.SceneLoad("LobbyScene");
+                //게임 씬 로딩
             }
-
-            if (!JSON.JsonUtil.FileCheck("UserMapData"))    //유저 맵 데이터
-            {
-                MapSaveData [] Node = new MapSaveData[3];
-
-                for(int i = 0; i < 3; i++)
-                {
-                    Node[i].m_iClearStage = -1;
-                    Node[i].m_iClearStar = -1;
-                }
-                //현재는 맵이 세가지
-
-                string jsonData = JSON.JsonUtil.ToJson<MapSaveData>(Node);
-                Debug.Log(jsonData);
-                JSON.JsonUtil.CreateJson("UserMapData", jsonData);
-            }
-
-            UserInfo.instance.Init();
-            UserInfo.instance.PartySetting();
-            GameManager.instance.Init();
-
-            //플레이어 캐릭터 정보가 존재한다면 로딩
-            LoadScene.SceneLoad("LobbyScene");
-            //게임 씬 로딩
         }
     }
 }

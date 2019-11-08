@@ -24,6 +24,7 @@ public class LobbyScene : MonoBehaviour
         get { return m_ePanel; }
         set { m_ePanel = value; }
     }
+    public UILabel m_UserName;
 
     private void Awake()
     {
@@ -41,6 +42,7 @@ public class LobbyScene : MonoBehaviour
         CurPanel = UI_PANEL.PANEL_END;
         GameObject Exit = ResourceLoader.CreatePrefab("Prefabs/QuitUI");
         Exit.transform.SetParent(UI.transform, false);
+        m_UserName.text = UserInfo.instance.UserName;
     }
 
     public void OnClick()

@@ -36,6 +36,12 @@ public class CharPartyList
 }
 
 [System.Serializable]
+public class UserNameData
+{
+    public string m_strUserName;
+}
+
+[System.Serializable]
 public class MapSaveData
 {
     public int m_iClearStage;
