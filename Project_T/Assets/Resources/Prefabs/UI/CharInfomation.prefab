@@ -428,7 +428,11 @@ MonoBehaviour:
   onHoverOver: []
   onHoverOut: []
   onPress: []
-  onRelease: []
+  onRelease:
+  - mTarget: {fileID: 3270934011033032067}
+    mMethodName: OnClick
+    mParameters: []
+    oneShot: 0
   onSelect: []
   onDeselect: []
   onClick:
@@ -437,16 +441,8 @@ MonoBehaviour:
     mParameters: []
     oneShot: 0
   onDoubleClick: []
-  onDragStart:
-  - mTarget: {fileID: 3270934011033032067}
-    mMethodName: DragStart
-    mParameters: []
-    oneShot: 0
-  onDragEnd:
-  - mTarget: {fileID: 3270934011033032067}
-    mMethodName: DragEnd
-    mParameters: []
-    oneShot: 0
+  onDragStart: []
+  onDragEnd: []
   onDragOver: []
   onDragOut: []
   onDrag: []

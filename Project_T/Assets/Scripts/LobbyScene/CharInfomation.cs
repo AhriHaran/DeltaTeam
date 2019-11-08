@@ -9,6 +9,7 @@ public class CharInfomation : MonoBehaviour
     private UILabel m_CharStatus;
     private CallBackInt m_OnClick;
     private int m_iIndex;
+    private bool m_bClick;
 
     private void Awake()
     {
@@ -26,33 +27,28 @@ public class CharInfomation : MonoBehaviour
         string MaxHP = Util.ConvertToString(UserInfo.instance.CompanionList[iIndex].ReturnData(CHARACTER_DATA.CHAR_MAX_HP));
         string ATK = Util.ConvertToString(UserInfo.instance.CompanionList[iIndex].ReturnData(CHARACTER_DATA.CHAR_ATK));
         m_CharStatus.text = "HP: " + MaxHP + "\t" + "ATK: " + ATK;
+        m_bClick = false;
     }
     
     public void OnClickSetting(CallBackInt call)
     {
         m_OnClick = call;
         //클릭 이벤트 셋팅
-    }
-
-    public void OnDragSetting(CallBackInt call)
-    {
-        m_OnClick = call;
-        //클릭 이벤트 셋팅
+        m_bClick = true;
     }
 
     public void OnClick()
     {
-        Debug.Log("ClickCallback");
-        Debug.Log(m_iIndex);
-        m_OnClick?.Invoke(m_iIndex);
+        if (m_bClick)
+        {
+            Debug.Log("ClickCallback");
+            Debug.Log(m_iIndex);
+            m_OnClick?.Invoke(m_iIndex);
+        }
     }
 
-    public void DragStart()
+    void OnPress()
     {
-    }
-
-    public void DragEnd()
-    {
-
+        Debug.Log("press");
     }
 }

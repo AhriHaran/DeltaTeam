@@ -148,11 +148,7 @@ MonoBehaviour:
   steeperCurves: 0
   tweenGroup: 0
   useFixedUpdate: 0
-  onFinished:
-  - mTarget: {fileID: 1108160661983702925}
-    mMethodName: OnFinished
-    mParameters: []
-    oneShot: 0
+  onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
   from: {x: 0, y: 300, z: 0}

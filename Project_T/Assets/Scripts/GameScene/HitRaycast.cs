@@ -47,6 +47,7 @@ public class HitRaycast : MonoBehaviour
                     FirstType = CHARACTER_TYPE.CHAR_ENEMY;
                 }
 
+                FirstType = CHARACTER_TYPE.CHAR_PLAYER;
 
                 GameManager.instance.FirstAttacker = FirstType;
                 GameManager.instance.WhoBattleType = BattleType; //누구랑 맞붙는가?

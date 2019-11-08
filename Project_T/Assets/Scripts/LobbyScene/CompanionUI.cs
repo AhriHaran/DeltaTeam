@@ -18,7 +18,6 @@ public class CompanionUI : MonoBehaviour
     private UILabel m_EXP;
 
     private int m_iCurIndex = -1;
-    private CHARACTER_SKILL_TYPE m_eCurSkill = CHARACTER_SKILL_TYPE.CHAR_SKILL_NONE;
 
     // Start is called before the first frame update
     void Awake()
@@ -47,44 +46,38 @@ public class CompanionUI : MonoBehaviour
     {
         //켜지면 무조건 0번쨰 인덱스 데이터
         m_CharScroll.GetComponent<CompanionScroll>().OnClickSetting(ShowInfoMation);//스크롤 뷰 콜백
-
         ShowInfoMation(0);
-
-        m_NormalSkillIcon.GetComponent<SkillIcon>().Setting(SkillInfoMation);   //스킬 아이콘 콜백
-        m_SkillIcon.GetComponent<SkillIcon>().Setting(SkillInfoMation); //스킬 아이콘 콜백
-
-        SkillInfoMation(CHARACTER_SKILL_TYPE.CHAR_ATTACK);
     }
 
     public void SkillInfoMation(CHARACTER_SKILL_TYPE eIndex)
     {
         //해당 스킬의 설명 스킬 관련 설명
         int iNormal = 0, iSkill = 1;
-        if(m_eCurSkill != eIndex)
-        {
-            var SkillTable = EXCEL.ExcelLoad.Read("Excel/SKILL_TABLE");
+        var SkillTable = EXCEL.ExcelLoad.Read("Excel/SKILL_TABLE");
 
-            iNormal += m_iCurIndex;
-            iSkill += m_iCurIndex;
-            int Atk = Util.ConvertToInt(UserInfo.instance.CompanionList[m_iCurIndex].ReturnData(CHARACTER_DATA.CHAR_ATK));
-            if (eIndex == CHARACTER_SKILL_TYPE.CHAR_ATTACK)
-            {
-                m_SkillName.text = Util.ConvertToString(SkillTable[iNormal]["skillname"]);
-                m_SkillDemage.text = Util.ConvertToString(Atk);
-                m_SkillCost.text = "1 스테미너 소모";
-                m_SkillIndex.text = Util.ConvertToString(SkillTable[iNormal]["skillindex"]);
-            }
-            else if (eIndex == CHARACTER_SKILL_TYPE.CHAR_SKILL)
-            {
-                m_SkillName.text = Util.ConvertToString(SkillTable[iSkill]["skillname"]);
-                float fSkill = float.Parse(Util.ConvertToString(UserInfo.instance.CompanionList[m_iCurIndex].ReturnData(CHARACTER_DATA.CHAR_SKILL_DEMAGE)));
-                fSkill *= (float)Atk;
-                fSkill = Mathf.Round(fSkill);
-                m_SkillDemage.text = Util.ConvertToString(fSkill);
-                m_SkillCost.text = "3 스테미너 소모";
-                m_SkillIndex.text = Util.ConvertToString(SkillTable[iSkill]["skillindex"]);
-            }
-            m_eCurSkill = eIndex;
+        if(m_iCurIndex >= 1)
+        {
+            iNormal = 1 + m_iCurIndex;
+            iSkill = 2 + m_iCurIndex;
+        }
+
+        int Atk = Util.ConvertToInt(UserInfo.instance.CompanionList[m_iCurIndex].ReturnData(CHARACTER_DATA.CHAR_ATK));
+        if (eIndex == CHARACTER_SKILL_TYPE.CHAR_ATTACK)
+        {
+            m_SkillName.text = Util.ConvertToString(SkillTable[iNormal]["skillname"]);
+            m_SkillDemage.text = Util.ConvertToString(Atk);
+            m_SkillCost.text = "1 스테미너 소모";
+            m_SkillIndex.text = Util.ConvertToString(SkillTable[iNormal]["skillindex"]);
+        }
+        else if (eIndex == CHARACTER_SKILL_TYPE.CHAR_SKILL)
+        {
+            m_SkillName.text = Util.ConvertToString(SkillTable[iSkill]["skillname"]);
+            float fSkill = float.Parse(Util.ConvertToString(UserInfo.instance.CompanionList[m_iCurIndex].ReturnData(CHARACTER_DATA.CHAR_SKILL_DEMAGE)));
+            fSkill *= (float)Atk;
+            fSkill = Mathf.Round(fSkill);
+            m_SkillDemage.text = Util.ConvertToString(fSkill);
+            m_SkillCost.text = "3 스테미너 소모";
+            m_SkillIndex.text = Util.ConvertToString(SkillTable[iSkill]["skillindex"]);
         }
     }
 
@@ -104,7 +97,11 @@ public class CompanionUI : MonoBehaviour
             string iCur = Util.ConvertToString(Node.ReturnData(CHARACTER_DATA.CHAR_CUR_EXP));
             m_EXP.text = iMax + " / " + iCur;
 
+            m_NormalSkillIcon.GetComponent<SkillIcon>().Setting(SkillInfoMation);   //스킬 아이콘 콜백
+            m_SkillIcon.GetComponent<SkillIcon>().Setting(SkillInfoMation); //스킬 아이콘 콜백
+
             m_iCurIndex = iIndex;
+            SkillInfoMation(CHARACTER_SKILL_TYPE.CHAR_ATTACK);
         }
     }
 }

@@ -45,16 +45,11 @@ public class CompanionScroll : MonoBehaviour
 
     public void OnClickSetting(CallBackInt call)
     {
+        //캐릭터 정보창에서 클릭 셋팅
         int iMax = UserInfo.instance.CompanionList.Count;
         for (int i = 0; i < iMax; i++)
         {
             m_Grid.transform.GetChild(i).GetComponent<CharInfomation>().OnClickSetting(call);
         }
-    }
-
-    public void OnDragSetting()
-    {
-        //드래그 앤 드롭
-
     }
 }

@@ -16,15 +16,11 @@ public class DemageLabel : MonoBehaviour
         m_DemageLabel.text = strDemage; //데미지 라벨
         gameObject.GetComponent<TweenPosition>().enabled = true;
         gameObject.GetComponent<TweenAlpha>().enabled = true;
-    }
-    
-    public void OnFinished()
-    {
+
         gameObject.GetComponent<TweenPosition>().from = new Vector3(0, 300, 0);
         gameObject.GetComponent<TweenPosition>().to = new Vector3(0, 500, 0);
 
         gameObject.GetComponent<TweenAlpha>().from = 1.0f;
         gameObject.GetComponent<TweenAlpha>().to = 0.0f;
-        gameObject.SetActive(false);
     }
 }

@@ -110,7 +110,7 @@ public class MissionResult : MonoBehaviour
                         m_Grid.transform.DetachChildren();
                     }
 
-                    GameObject Resque = ResourceLoader.CreatePrefab("ResquePlayerCard");
+                    GameObject Resque = ResourceLoader.CreatePrefab("Prefabs/UI/ResquePlayerCard");
                     Resque.transform.SetParent(m_Grid.transform, false);
                     Resque.GetComponent<PlayerResqueCard>().Setting(GameManager.instance.WhoRescueName, GameManager.instance.WhoRescueClass);
 
