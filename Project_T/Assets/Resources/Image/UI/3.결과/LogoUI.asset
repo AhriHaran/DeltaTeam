@@ -40,7 +40,7 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 13
     paddingBottom: 14
-  - name: defeat
+  - name: MISSION_BATTLE_LOSE
     x: 0
     y: 650
     width: 505

@@ -116,7 +116,7 @@ public class LobbyScene : MonoBehaviour
             GameManager.instance.ResetFiledData();  //필드 데이터 리셋
             
             GameManager.instance.StageIndex = iStage;
-            GameManager.instance.BlockIndex = 6;
+            GameManager.instance.BlockIndex = 0;
             //게임 씬 
 
             UserInfo.instance.UserPartyCopy();  //유저파티 카피

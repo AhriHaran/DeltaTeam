@@ -109,7 +109,6 @@ public class PrologueScene : MonoBehaviour
                 {
                     Node[i] = new MapSaveData();
                     Node[i].m_iClearStage = -1;
-                    Node[i].m_iClearStar = -1;
                 }
                 //현재는 맵이 세가지
 

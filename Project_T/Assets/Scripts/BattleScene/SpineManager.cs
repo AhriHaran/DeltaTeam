@@ -199,11 +199,6 @@ public class SpineManager : MonoBehaviour
         }
     }
 
-    public void TargetEffect()
-    {
-        m_TargetUI.GetComponent<GageUI>().SliderSetting();
-    }
-
     public void TargetEffect(int iTarget)
     {
         if(transform.childCount > iTarget)

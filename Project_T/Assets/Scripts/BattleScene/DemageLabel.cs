@@ -13,6 +13,8 @@ public class DemageLabel : MonoBehaviour
 
     public void Setting(string strDemage)
     {
+        if(m_DemageLabel == null)
+            m_DemageLabel = transform.GetComponent<UILabel>();
         m_DemageLabel.text = strDemage; //데미지 라벨
         gameObject.GetComponent<TweenPosition>().enabled = true;
         gameObject.GetComponent<TweenAlpha>().enabled = true;
@@ -22,5 +24,9 @@ public class DemageLabel : MonoBehaviour
 
         gameObject.GetComponent<TweenAlpha>().from = 1.0f;
         gameObject.GetComponent<TweenAlpha>().to = 0.0f;
+    }
+    public void OnFinished()
+    {
+        gameObject.SetActive(false);
     }
 }

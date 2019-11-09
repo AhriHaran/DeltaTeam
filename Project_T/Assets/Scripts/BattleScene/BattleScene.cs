@@ -55,7 +55,7 @@ public class BattleScene : MonoBehaviour
                     TurnEnd();
                     break;
             }
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -207,16 +207,16 @@ public class BattleScene : MonoBehaviour
                 fHP = 0.0f;
             TargetParty[iTargetIndex].CurHP = fHP;
 
-
+            //어택 체크 후 HP Refresh
             m_PlayerPoint.GetComponent<SpineManager>().HPRefresh();
             m_EnemyPoint.GetComponent<SpineManager>().HPRefresh();
             m_AttakcUI.GetComponent<AttackUI>().HPRefresh();    //
                                                                 //타겟 UI도 리셋팅, SpineManager에서 셋
-            //UI호출
-            m_DemageLabel.SetActive(true);
+                                                                //UI호출
             int iAtk = Util.ConvertToInt(fAtk);
             m_DemageLabel.GetComponent<DemageLabel>().Setting(Util.ConvertToString(iAtk));//데미지 표기
                                                                                           //데미지 라벨 호출
+            m_DemageLabel.SetActive(true);
 
             m_PlayerPoint.GetComponent<SpineManager>().BattleAnimation();
             m_EnemyPoint.GetComponent<SpineManager>().BattleAnimation();
@@ -359,6 +359,7 @@ public class BattleScene : MonoBehaviour
                         bDie = true;
                     }
 
+                    //죽었을때?
                     m_PlayerPoint.GetComponent<SpineManager>().HPRefresh();
                     m_EnemyPoint.GetComponent<SpineManager>().HPRefresh();
                     m_AttakcUI.GetComponent<AttackUI>().HPRefresh();
@@ -366,11 +367,11 @@ public class BattleScene : MonoBehaviour
                     //죽음에 대한 것을 처리 하고 더 공격할 것이 있는가를체크
                     GameManager.instance.TargetAnimeEnd = false;
                     GameManager.instance.AttackAnimeEnd = false;
-                    GameManager.instance.WhatPhase = GAME_PHASE.PHASE_TURN_START;
 
                     if (!bDie)
                     {
-                        TurnStart();
+                        GameManager.instance.WhatPhase = GAME_PHASE.PHASE_TURN_START;
+                        //죽지 않았다.
                     }
                 }
             }
@@ -419,7 +420,12 @@ public class BattleScene : MonoBehaviour
             }
         }
 
+        //턴엔드 시 Refresh
+        m_PlayerPoint.GetComponent<SpineManager>().HPRefresh();
+        m_EnemyPoint.GetComponent<SpineManager>().HPRefresh();
+        m_AttakcUI.GetComponent<AttackUI>().HPRefresh();    //
+        //
+
         GameManager.instance.ResetBattleData();//데이터 리셋하고
-        TurnStart();
     }
 }

@@ -89,7 +89,7 @@ public class CharInfomation : MonoBehaviour
     {
         if(m_bDrag)
         {
-            m_PartySprite.transform.localPosition = UICamera.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            m_PartySprite.transform.position = UICamera.mainCamera.ScreenToWorldPoint(Input.mousePosition);
         }
         //첫 클릭 후 드래그 시 해당 이미지가 마우를 따라 간다. 놓을 시에는 
     }

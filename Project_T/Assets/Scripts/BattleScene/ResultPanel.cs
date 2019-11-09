@@ -36,10 +36,10 @@ public class ResultPanel : MonoBehaviour
         }
 
         if (GameManager.instance.WhatPhase == GAME_PHASE.PHASE_RESULT_LOSE)
-            m_ResultSprite.spriteName = "defeat";
+            m_ResultSprite.spriteName = MISSION_STATUS.MISSION_BATTLE_LOSE.ToString();
         else if(GameManager.instance.WhatPhase == GAME_PHASE.PHASE_RESULT_WIN)
         {
-            m_ResultSprite.spriteName = "victory";
+            m_ResultSprite.spriteName = MISSION_STATUS.MISSION_COMPLETE.ToString();
             int iMaxEXP = GameManager.instance.EnemyEXP;
             var PlayerParty = GameManager.instance.PlayerParty;
             var UserParty = UserInfo.instance.PartyList;

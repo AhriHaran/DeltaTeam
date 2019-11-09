@@ -7,6 +7,7 @@ public class SpotLight : MonoBehaviour
     //히트 체크
     public GameObject m_HitPoint;
     private Light m_Light;
+    private Light m_ChildeLight;
     private HitRaycast m_HitRayCast;
 
     private int m_iBlockIndex;
@@ -36,6 +37,7 @@ public class SpotLight : MonoBehaviour
     private void Awake()
     {
         m_Light = transform.GetComponent<Light>();
+        m_ChildeLight = transform.GetChild(0).GetComponent<Light>();
         OnOffSpeed = 0.0f;
         OnOffTime = 0.0f;
         m_fCurTime = 0.0f;
@@ -46,6 +48,7 @@ public class SpotLight : MonoBehaviour
     public void ColorSetting(float R, float G, float B)
     {
         m_Light.color = new Color(R, G, B);
+        m_ChildeLight.color = new Color(R, G, B);
     }
 
     public void CoroutineStart(bool bStart)
@@ -78,6 +81,7 @@ public class SpotLight : MonoBehaviour
                 if (m_fCurTime >= OnOffSpeed)
                 {
                     m_Light.enabled = true;
+                    m_ChildeLight.enabled = true;
                     //안켜진 상태 시간 지나면 켜준다.
                     m_HitPoint.SetActive(true);
                     m_bOn = true;
@@ -91,6 +95,7 @@ public class SpotLight : MonoBehaviour
                 {
                     //켜진상태 시간 지나면 꺼주고
                     m_Light.enabled = false;
+                    m_ChildeLight.enabled = false;
                     m_HitPoint.SetActive(false);
                     m_bOn = false;
                     m_fCurTime = 0.0f;
