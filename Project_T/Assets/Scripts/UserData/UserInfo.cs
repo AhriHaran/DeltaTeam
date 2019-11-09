@@ -23,6 +23,14 @@ public class UserInfo : GSingleton<UserInfo>
         get { return m_UserName; }
         set { m_UserName = value; }
     }
+
+    private List<MapSaveData> m_MapList = new List<MapSaveData>();
+    public List<MapSaveData> MapList
+    {
+        get { return m_MapList; }
+        set { m_MapList = value; }
+    }
+
     public void Init()
     {
         if (JSON.JsonUtil.FileCheck("UserData")) //유저 메인 캐릭터 JSON
@@ -41,6 +49,11 @@ public class UserInfo : GSingleton<UserInfo>
             UserName = JsonData.m_strUserName;
         }
         //유저 이름 셋팅
+    
+        if(JSON.JsonUtil.FileCheck(""))
+        {
+            CharData[] JsonData = JSON.JsonUtil.LoadArrJson<CharData>("UserData");
+        }
     }
 
     public void CompanionSetting(CharData Data)

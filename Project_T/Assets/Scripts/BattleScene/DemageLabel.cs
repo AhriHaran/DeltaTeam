@@ -4,33 +4,49 @@ using UnityEngine;
 
 public class DemageLabel : MonoBehaviour
 {
+    private float m_fPosY = 0.0f;
+    private float m_fYSpeed = 5.0f;
+    private float m_fAlpha = 0.05f;
+
     private UILabel m_DemageLabel;
-    private TweenPosition m_TweenPos;
-    private TweenAlpha m_TweenAlpha;
     // Start is called before the first frame update
     private void Awake()
     {
         m_DemageLabel = transform.GetComponent<UILabel>();
-        m_TweenPos = gameObject.GetComponent<TweenPosition>();
-        m_TweenAlpha = gameObject.GetComponent<TweenAlpha>();
     }
 
     public void Setting(string strDemage)
     {
         m_DemageLabel.text = strDemage; //데미지 라벨
-
-        m_TweenPos.from = new Vector3(0, 300, 0);
-        m_TweenPos.to = new Vector3(0, 500, 0);
-
-        m_TweenAlpha.from = 1.0f;
-        m_TweenAlpha.to = 0.0f;
-        
-        m_TweenPos.PlayForward();
-        m_TweenAlpha.PlayForward();
+        transform.localPosition.Set(0.0f, m_fPosY, 0.0f);
+        m_DemageLabel.alpha = 1.0f;
+        StartCoroutine("TweenLabel");
     }
-
-    public void OnFinished()
+    
+    IEnumerator TweenLabel()
     {
-        gameObject.SetActive(false);
+        while(true)
+        {
+            float fY = transform.localPosition.y;
+            bool bStop = false;
+            fY += m_fYSpeed;
+            transform.localPosition = new Vector3(0.0f, fY);
+
+            fY = m_DemageLabel.alpha;
+            fY -= m_fAlpha;
+
+            if (fY < 0.0f)
+            {
+                fY = 0.0f;
+                bStop = true;
+            }
+
+            m_DemageLabel.alpha = fY;
+
+            if (bStop)
+                StopCoroutine("TweenLabel");
+
+            yield return null;
+        }
     }
 }

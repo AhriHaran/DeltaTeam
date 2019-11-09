@@ -44,7 +44,7 @@ public class UserNameData
 [System.Serializable]
 public class MapSaveData
 {
-    public int m_iClearStage;   //클리어 스테이지
+    public bool m_bStageClear;   //클리어 스테이지
 }
 
 [System.Serializable]

@@ -150,12 +150,20 @@ public class MissionResult : MonoBehaviour
         }
         else
         {
-            //로비신으로\
-            UserInfo.instance.UserCompanionSave();
-            UserInfo.instance.UserPartySave();
-            //세이브 후 로비신으로
-            Time.timeScale = 1.0f;
-            LoadScene.SceneLoad("LobbyScene");
+            int iStage = GameManager.instance.StageIndex;
+
+
         }
     }
+
+    private void SaveAndLobby()
+    {
+        //로비신으로\
+        UserInfo.instance.UserCompanionSave();
+        UserInfo.instance.UserPartySave();
+        //세이브 후 로비신으로
+        Time.timeScale = 1.0f;
+        LoadScene.SceneLoad("LobbyScene");
+    }
+
 }

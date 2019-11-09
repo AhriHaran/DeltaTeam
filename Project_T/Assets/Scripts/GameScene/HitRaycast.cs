@@ -47,8 +47,6 @@ public class HitRaycast : MonoBehaviour
                     FirstType = CHARACTER_TYPE.CHAR_ENEMY;
                 }
 
-                FirstType = CHARACTER_TYPE.CHAR_PLAYER;
-
                 GameManager.instance.FirstAttacker = FirstType;
                 GameManager.instance.WhoBattleType = BattleType; //누구랑 맞붙는가?
                 Manager.EnemyPartySet();
@@ -59,7 +57,6 @@ public class HitRaycast : MonoBehaviour
                 //맥스 타임 셋팅
                 ////현재 위치로 되돌려 줘야한다.s
                 LoadScene.SceneLoad("BattleScene");
-                Debug.Log("BattlePhage");
             }
             catch
             {
