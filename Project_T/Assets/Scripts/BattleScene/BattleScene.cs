@@ -212,11 +212,10 @@ public class BattleScene : MonoBehaviour
             m_EnemyPoint.GetComponent<SpineManager>().HPRefresh();
             m_AttakcUI.GetComponent<AttackUI>().HPRefresh();    //
                                                                 //타겟 UI도 리셋팅, SpineManager에서 셋
-                                                                //UI호출
+            m_DemageLabel.SetActive(true);                                                 //UI호출
             int iAtk = Util.ConvertToInt(fAtk);
             m_DemageLabel.GetComponent<DemageLabel>().Setting(Util.ConvertToString(iAtk));//데미지 표기
                                                                                           //데미지 라벨 호출
-            m_DemageLabel.SetActive(true);
 
             m_PlayerPoint.GetComponent<SpineManager>().BattleAnimation();
             m_EnemyPoint.GetComponent<SpineManager>().BattleAnimation();
